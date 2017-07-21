@@ -18,7 +18,8 @@ echo "${green}${timestamp}${reset}"
 
 echo "
 1. [cmd_zz_proto.sh] protoc生成pb{h,m}文件更新到项目中
-2. [cmd_zz_proto.sh] protoc生成pb{h,m}文件更新到项目中
+2. [urlencode.py] url encode编码
+3. [urldecode.py] url decode解码
 "
 
 
@@ -28,7 +29,13 @@ read cmd_index
 if [ $cmd_index -eq 1 ]; then
     bash $cmd_path/cmd_zz_proto.sh
 elif [ $cmd_index -eq 2 ]; then
-    bash $cmd_path/cmd_zz_proto.sh
+    echo "${blue}请输入要编码的字符串：${reset}"
+    read url_data
+    python $cmd_path/urlencode.py $url_data
+elif [ $cmd_index -eq 3 ]; then
+    echo "${blue}请输入要解码的字符串：${reset}"
+    read url_data
+    python $cmd_path/urldecode.py $url_data
 else
     echo "请输入正确的序号"
 fi
